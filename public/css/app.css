@@ -1,0 +1,44 @@
+body a {
+  color: #3273dc;
+}
+
+footer.footer {
+  padding: 0px;
+}
+
+.is-fixed {
+  position: fixed;
+}
+
+.is-fixed-bottom {
+  bottom: 0;
+}
+
+.is-full-width {
+  /* .is-fullwidth should work in bulma, but doesn't */
+  width: 100%;
+}
+
+.search__result p {
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(10,10,10,.1);
+}
+
+.search__results {
+  background-color: white;
+  color: #3273dc;
+  display: none;
+  overflow: hidden;
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  z-index: 99;
+}
+
+.search input.input {
+  background-color: #363636;
+  border: none;
+  border-radius: 0px;
+  color: #f5f5f5;
+  outline: none;
+}

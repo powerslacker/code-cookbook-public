@@ -1,0 +1,33 @@
+extends layout
+
+block content
+
+  script.
+
+    var lock = new Auth0Lock(
+      '#{env.AUTH0_CLIENT}', 
+      '#{env.AUTH0_DOMAIN}',
+      { 
+        auth: {
+          redirectUrl: '#{env.AUTH0_CALLBACK}',
+          rememberLastLogin: true,
+        },
+        closable: false
+      }
+      )
+
+    lock.on("authenticated", function (authResult) {
+      // Use the token in authResult to getUserInfo() and save it to localStorage
+      lock.getUserInfo(authResult.accessToken, function (error, profile) {
+        if (error) {
+          // Handle error
+          console.warn(error)
+          return;
+        }
+
+        localStorage.setItem('accessToken', authResult.accessToken)
+        localStorage.setItem('profile', JSON.stringify(profile))
+      })
+    })
+
+    lock.show()

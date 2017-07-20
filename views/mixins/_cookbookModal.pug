@@ -1,0 +1,23 @@
+mixin cookbookModal(recipe = {})
+  if locals.user
+    .modal.cookbook__modal
+      .modal-background(onclick="this.parentElement.classList.remove('is-active')")
+      .modal-content
+        .box
+          p
+            strong Add to Cookbook
+          form.form.cookbook__form
+            .control
+              input.input(type="hidden" value=recipe._id name="recipe")
+            .control
+              input.input(type="hidden" value=locals.user.id name="author")
+            .field.has-addons
+              .control.is-expanded
+                input.input.cookbook__input(placeholder="New cookbook", name='title')
+              .control 
+                button.button.is-info(onclick=`return postNewCookbook(this)`)
+                  span.icon
+                    i.fa.fa-check
+          hr
+          .cookbook__modal__list
+          

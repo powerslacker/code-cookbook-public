@@ -1,0 +1,14 @@
+extends layout
+
+include mixins/_recipe
+
+block content
+  section.section
+    .container
+      h1= title
+      if title
+        hr
+      each recipe in data
+        +recipe(recipe, cookbook || {})
+
+          

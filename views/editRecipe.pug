@@ -1,0 +1,12 @@
+extends layout
+
+include mixins/_recipeForm
+
+block content
+  section.section
+    .container
+      h1= title
+      .card
+        +recipeForm(data)
+  
+  

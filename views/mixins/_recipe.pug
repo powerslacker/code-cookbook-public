@@ -1,0 +1,23 @@
+mixin recipe(recipe = {}, cookbook = {})
+  include _cookbookModal
+  .box
+    +cookbookModal(recipe)
+    h4= recipe.title
+    pre=  recipe.content
+    nav.level.is-mobile
+      .level-left
+        if authorized
+          a.level-item(href=`/recipe/edit/${recipe.slug}`)
+            span.icon.is-small 
+              i.fa.fa-pencil-square-o
+          a.level-item(onclick=`if (confirm('Are you sure you want to delete?')) window.location = "/recipe/delete/${recipe._id}"`)
+            span.icon.is-small
+              i.fa.fa-trash
+          if cookbook.id
+            a.level-item(onclick=`if (confirm('Are you sure you want to remove this from the cookbook?')) window.location = "/cookbook/removeRecipe/${cookbook.id}/${recipe._id}"`)
+              span.icon.is-small
+                i.fa.fa-chain-broken
+      if locals.user
+        a.level-item
+          span.icon.is-small(onclick=`openCookbookMenu('${locals.user.id}', this)`)
+            i.fa.fa-plus

@@ -1,0 +1,13 @@
+mixin cookbook(cookbook = {})
+  .box
+    h1
+      a(href=`/cookbook/view/${cookbook.slug}`)= cookbook.title
+    nav.level.is-mobile
+      .level-left
+        if authorized
+          a.level-item(href=`/cookbook/edit/${cookbook.slug}`)
+            span.icon.is-medium 
+              i.fa.fa-pencil-square-o
+          a.level-item(onclick=`if (confirm('Are you sure you want to delete?')) window.location = "/cookbook/delete/${cookbook._id}"`)
+            span.icon.is-medium
+              i.fa.fa-trash
